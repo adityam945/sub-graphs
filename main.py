@@ -44,12 +44,30 @@ resWeighted = [ (
         for i in range(len(result1))]
 
 graphPoint = res
-# print(resWeighted)
 
 test = SCCManager(graphPoint)
 clusters = test.get_scc()
-for i in clusters:
-    print(i)
 
+
+result1_unique = [*set(result1)]
+# print(result1)
+
+mapper = {}
+
+for indexx in range(len(result1_unique)):
+    for i in range(len(clusters)):
+        for j in range(len(clusters[i])):
+            if clusters[i][j] == result1_unique[indexx]:
+                mapper[clusters[i][j]] = i
+
+newweightGraph= []
+for ele in resWeighted:
+    # print(ele[0])
+    newweightGraph.append( 
+        [ele[0], ele[1], ele[2], mapper[ele[0]]]
+        )
+
+with open('outfile.txt', 'w') as file:
+    file.writelines('\t'.join(str(j) for j in i) + '\n' for i in newweightGraph)
 now = time.time()
 print("It has been {0} seconds since the loop started".format(now - start))

@@ -78,9 +78,14 @@ import matplotlib.pyplot as plt
 n = 6
 p = 0.5
 g = erdos_renyi_graph(n, p, directed=True)
-print(g.nodes)
+print(g.edges)
+
+
 
 G = g
+H = g.subgraph([0, 1, 2])
+# print(list(H.edges(2)), 'H')
+# print(list(H.nodes))
 
 import random
 # #code creating G here
@@ -91,9 +96,10 @@ for (u, v) in G.edges():
     G.edges[u,v]['weight'] = random.randint(0,10)
 
 
-print(G.edges)
-for (u, v, d) in G.edges(data=True):
-    print(u, v, d)
+# print(G.edges)
+# for (u, v, d) in G.edges(data=True):
+#     print(u, v, d)
+
 
 elarge = [(u, v) for (u, v, d) in G.edges(data=True) if d["weight"] > 0.5]
 esmall = [(u, v) for (u, v, d) in G.edges(data=True) if d["weight"] <= 0.5]
@@ -119,5 +125,5 @@ ax = plt.gca()
 ax.margins(0.08)
 plt.axis("off")
 plt.tight_layout()
-plt.show()
+# plt.show()
 

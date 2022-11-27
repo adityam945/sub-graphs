@@ -44,7 +44,7 @@ resWeighted = [ (
         for i in range(len(result1))]
 
 graphPoint = res
-
+print('started SCC')
 test = SCCManager(graphPoint)
 clusters = test.get_scc()
 

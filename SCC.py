@@ -2,7 +2,8 @@ class SCCManager:
     def __init__(self, edges):
         self.clusters = []
         self.edges = edges
-        self.count = 0
+        self.count_nodes = {}
+
 
     def clusters_in(self, conn):
         first, second = conn
@@ -27,9 +28,13 @@ class SCCManager:
         return True
 
     def get_scc(self):
+        
         for edge in self.edges:
-            if self.count % 99 == 0:
-                print(edge, "edge")
+            if edge[0] in self.count_nodes:
+                pass
+            else:
+                self.count_nodes[edge[0]] = 0
+                print(edge[0], "edge")
             c_first, c_second = self.clusters_in(edge)
 
             # case 1: none of the vertices are in an existing cluster

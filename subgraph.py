@@ -49,7 +49,7 @@ def runForRndGen(total_nodes, total_destn, total_sub_graphs, index):
 def main():
     for i in range(5):
 
-        runForRndGen(10000, 120, 100, i)
+        runForRndGen(10000, 120, 10, i)
         print('Gen', i)
 
 

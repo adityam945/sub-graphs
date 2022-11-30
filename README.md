@@ -1,3 +1,3 @@
-# Python NetworkX 
+# Python NetworkX
 
-#### Create SubGraphs
+#### Create SubGraphs Using SCC - meits
